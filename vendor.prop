@@ -15,8 +15,8 @@ dalvik.vm.dex2oat-minidebuginfo=false
 dalvik.vm.minidebuginfo=false
 
 # Audio
-#ro.config.vc_call_vol_steps=7
-#ro.config.media_vol_steps=15
+ro.config.vc_call_vol_steps=7
+ro.config.media_vol_steps=15
 af.fast_track_multiplier=1
 audio.chk.cal.us=0
 audio.deep_buffer.media=true
@@ -57,8 +57,10 @@ vendor.voice.voip.conc.disabled=true
 # shutdown
 ro.build.shutdown_timeout=2
 
-# Apex
-ro.apex.updatable=false
+# Force disable updating of APEXes when flatten APEX flag is enabled
+ifeq ($(OVERRIDE_TARGET_FLATTEN_APEX),true)
+PRODUCT_PRODUCT_PROPERTIES += ro.apex.updatable=false
+endif
 
 # Audio Fluence
 persist.vendor.audio.fluence.speaker=true
@@ -103,15 +105,14 @@ debug.enable.sglscale=1
 debug.gralloc.enable_fb_ubwc=1
 debug.mdpcomp.logs=0
 debug.sf.enable_hwc_vds=0
-<<<<<<< HEAD
-debug.sf.disable_backpressure=1
+debug.hwc.winupdate=1
+debug.sf.disable_backpressure=0
+debug.sf.enable_gl_backpressure=1
 debug.sf.hw=1
-debug.egl.hw=0
-=======
-debug.sf.hw=0
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+vendor.hwc.dpp.downscale=2
 debug.sf.latch_unsignaled=0
 debug.egl.hw=1
->>>>>>> 71ff4fe (sdm439-common: retune and cleanup of vendor props)
 debug.sf.recomputecrop=0
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -131,7 +132,6 @@ vendor.display.enable_default_color_mode=1
 vendor.display.qdcm.disable_factory_mode=1
 vendor.display.qdcm.mode_combine=1
 vendor.gralloc.enable_fb_ubwc=1
-debug.sf.latch_unsignaled=1
 
 # DRM
 drm.service.enabled=true
@@ -266,7 +266,7 @@ ro.lmk.kill_heaviest_task=false
 ro.statsd.enable=false
 
 # graphics
-debug.hwui.renderer=opengl
+debug.hwui.renderer=skiagl
 debug.cpurend.vsync=false
 debug.sf.disable_client_composition_cache=1
 

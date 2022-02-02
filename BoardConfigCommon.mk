@@ -6,6 +6,11 @@
 
 COMMON_PATH := device/xiaomi/sdm439-common
 
+# APEX
+OVERRIDE_TARGET_FLATTEN_APEX := true
+
+MALLOC_SVELTE := true
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -107,7 +112,7 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 # SurfaceFlinger
 TARGET_USE_AOSP_SURFACEFLINGER := true
 
-TARGET_SCREEN_DENSITY := 288
+TARGET_SCREEN_DENSITY := 320
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true

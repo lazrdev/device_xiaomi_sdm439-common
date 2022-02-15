@@ -300,3 +300,6 @@ touch.distance.calibration=none
 touch.distance.scale=0
 touch.coverage.calibration=box
 touch.gestureMode=spots
+
+# whatever this is
+debug.performance.tuning=1

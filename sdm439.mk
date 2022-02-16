@@ -403,10 +403,3 @@ $(call inherit-product, vendor/xiaomi/sdm439-common/sdm439-common-vendor.mk)
 
 # Inherit GoogleCamera
 $(call inherit-product-if-exists, vendor/GoogleCameraPine/Camera.mk)
-
-# GcamGo, Leaflet and Recorder prebuilts
-Write PRODUCT_PACKAGES += \  
-      CameraGo \
-      Recorder \
-      Leaflet
-
